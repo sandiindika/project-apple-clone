@@ -81,14 +81,14 @@ export const VideoCarousel = () => {
                         });
                     }
                 }
-            })
+            });
 
             if (videoId === 0) {
                 anim.restart();
             }
 
             const animUpdate = () => {
-                anim.progress(videoRef.current[videoId] / hightlightsSlides[videoId].videoDuration);
+                anim.progress(videoRef.current[videoId].currentTime / hightlightsSlides[videoId].videoDuration);
             }
 
             if (isPlaying) {
@@ -120,7 +120,11 @@ export const VideoCarousel = () => {
                 break;
 
             case 'video-reset':
-                setVideo((pre) => ({...pre, isLastVideo: false, videoId: 0}))
+                setVideo((pre) => ({...pre, videoId: 0, isLastVideo: false}))
+                break;
+
+            case 'pause':
+                setVideo((pre) => ({...pre, isPlaying: !pre.isPlaying}))
                 break;
 
             case 'play':
@@ -139,23 +143,22 @@ export const VideoCarousel = () => {
         <>
             <div className="flex items-center">
                 {hightlightsSlides.map((list, index) => (
-                    <div key={index} id="slider" className="sm:pr-20 pr-10">
+                    <div key={list.id} id="slider" className="sm:pr-20 pr-10">
                         <div className="video-carousel_container">
                             <div className="w-full h-full flex-center rounded-3xl overflow-hidden bg-black">
                                 <video
                                     id="video"
                                     playsInline={true}
+                                    className={`${list.id === 2 && "translate-x-44"} pointer-events-none`}
                                     preload="auto"
                                     muted
                                     ref={(element) => videoRef.current[index] = element}
                                     onEnded={() =>
                                         index !== 3 ? handleProcess('video-end', index) : handleProcess('video-last')
                                     }
-                                    onPlay={() => {
-                                        setVideo((prevVideo) => ({
-                                            ...prevVideo, isPlaying: true
-                                        }))
-                                    }}
+                                    onPlay={() =>
+                                        setVideo((pre) => ({ ...pre, isPlaying: true }))
+                                    }
                                     onLoadedMetadata={(event) =>
                                         handleLoadedMetadata(index, event)}
                                 >
@@ -180,12 +183,12 @@ export const VideoCarousel = () => {
                     {videoRef.current.map((_, index) => (
                         <span
                             key={index}
-                            ref={(element) => videoDivRef.current[index] = element}
                             className="mx-2 w-3 h-3 bg-gray-200 rounded-full relative cursor-pointer"
+                            ref={(element) => (videoDivRef.current[index] = element)}
                         >
                             <span
                                 className="absolute h-full w-full rounded-full"
-                                ref={(element) => videoSpanRef.current[index] = element}
+                                ref={(element) => (videoSpanRef.current[index] = element)}
                             />
                         </span>
                     ))}
@@ -201,4 +204,4 @@ export const VideoCarousel = () => {
             </div>
         </>
     )
-}
+};
