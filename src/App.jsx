@@ -4,6 +4,7 @@ import {Highlights} from "./components/Highlights.jsx";
 import {Model} from "./components/Model.jsx";
 import {Features} from "./components/Features.jsx";
 import {HowItWorks} from "./components/HowItWorks.jsx";
+import {Footer} from "./components/Footer.jsx";
 
 const App = () => {
     return (
@@ -14,6 +15,7 @@ const App = () => {
             <Model />
             <Features />
             <HowItWorks />
+            <Footer />
         </main>
     )
 }
