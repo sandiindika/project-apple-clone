@@ -1,13 +1,14 @@
-import {Html, OrbitControls, PerspectiveCamera, View} from "@react-three/drei"
+import {OrbitControls, PerspectiveCamera, View} from "@react-three/drei"
 
 import * as THREE from "three";
 import {Lights} from "./Lights.jsx";
 import {Suspense} from "react";
 import {Loader} from "./Loader.jsx";
-import {IPhone} from "./IPhone.jsx";
+import {Model as IPhone} from "./IPhone.jsx";
 
 // eslint-disable-next-line react/prop-types
 export const ModelView = ({ index, groupRef, gsapType, controlRef, setRotationState, size, item }) => {
+
     return (
         <View
             index={index}
@@ -15,7 +16,7 @@ export const ModelView = ({ index, groupRef, gsapType, controlRef, setRotationSt
             className={`w-full h-full absolute ${index === 2 ? 'right-[-100%]' : ''}`}
         >
             {/* eslint-disable-next-line react/no-unknown-property */}
-            <ambienLight intensity={0.3} />
+            <ambientLight intensity={0.3} />
 
             <PerspectiveCamera makeDefault position={[0, 0, 4]} />
 

@@ -23,7 +23,7 @@ export const animateWithGsapTimeline = (
     secondTarget,
     animationProps) => {
 
-    timeline.to(rationRef.current.rotation, {
+    timeline.to(rotationRef.current.rotation, {
         y: rotationState,
         duration: 1,
         ease: 'power2.inOut',
