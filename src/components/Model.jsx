@@ -10,7 +10,7 @@ import { View } from "@react-three/drei";
 import { models, sizes } from "../constants/index.js";
 import { animateWithGsapTimeline } from "../utils/animations";
 
-export const Model = () => {
+const Model = () => {
 
     const [size, setSize] = useState('small');
     const [model, setModel] = useState({
@@ -130,3 +130,5 @@ export const Model = () => {
         </section>
     )
 }
+
+export default Model

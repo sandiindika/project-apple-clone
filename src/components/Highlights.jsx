@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { rightImg, watchImg } from "../utils/index.js";
 import { VideoCarousel } from "./VideoCarousel.jsx";
 
-export const Highlights = () => {
+const Highlights = () => {
 
     useGSAP(() => {
         gsap.to("#title", { opacity: 1, y: 0 })
@@ -33,3 +33,5 @@ export const Highlights = () => {
         </section>
     )
 }
+
+export default Highlights;

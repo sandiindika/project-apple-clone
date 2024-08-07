@@ -1,20 +1,31 @@
-import {Navbar} from "./components/Navbar.jsx";
-import {Hero} from "./components/Hero.jsx";
-import {Highlights} from "./components/Highlights.jsx";
-import {Model} from "./components/Model.jsx";
-import {Features} from "./components/Features.jsx";
-import {HowItWorks} from "./components/HowItWorks.jsx";
-import {Footer} from "./components/Footer.jsx";
+// eslint-disable-next-line no-unused-vars
+import React, { Suspense, lazy } from 'react';
+
+const Navbar = lazy(() => import("./components/Navbar.jsx"));
+const Hero = lazy(() => import('./components/Hero.jsx'));
+const Highlights = lazy(() => import('./components/Highlights.jsx'));
+const Model = lazy(() => import('./components/Model.jsx'));
+const Features = lazy(() => import('./components/Features.jsx'));
+const HowItWorks = lazy(() => import('./components/HowItWorks.jsx'));
+const Footer = lazy(() => import('./components/Footer.jsx'));
 
 const App = () => {
     return (
         <main className="bg-black">
             <Navbar />
             <Hero />
-            <Highlights />
-            <Model />
-            <Features />
-            <HowItWorks />
+            <Suspense fallback={<div>Loading...</div>}>
+                <Highlights />
+            </Suspense>
+            <Suspense fallback={<div>Loading...</div>}>
+                <Model />
+            </Suspense>
+            <Suspense fallback={<div>Loading...</div>}>
+                <Features />
+            </Suspense>
+            <Suspense fallback={<div>Loading...</div>}>
+                <HowItWorks />
+            </Suspense>
             <Footer />
         </main>
     )
