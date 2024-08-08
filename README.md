@@ -80,9 +80,3 @@ The main directories are `public`, `models`, and `src`. The `public` directory c
 - `react-dom`
 - `three`
 - Other notable dependencies include `@eslint/object-schema`, `@gsap/react`, and `gsap`.
-
-## Inspired by
-
-This project is based on Adrian Hajdin's JS Mastery course on building an iPhone app with React and Vite.
-
-- [Adrian Hajdin - JS Mastery](https://github.com/adrianhajdin/iphone/)
